@@ -5,4 +5,46 @@
   position: absolute;
   top: 0;
   left: 0;
+  display: grid;
+  grid-template-columns: 10% 60% 30%;
+  grid-template-rows: 100%;
+  gap: 0px;
+  align-items: center;
+}
+
+.logoRD {
+  font-size: 60px;
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.keywordsReference {
+  font-size: 25px;
+  grid-row: 1;
+  grid-column: 3;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: 100%;
+  gap: 0px;
+}
+
+a:link {
+  color: rgba(255, 255, 255, 0.87);
+}
+
+a:hover {
+  color: red;
+  box-shadow: 2px 2px 2px 2px white;
+}
+
+/* a:visited {
+  color: rgba(255, 255, 255, 0.87);
+}
+
+a:focus {
+  color: white;
+} */
+
+a:active {
+  color: rgb(204, 2, 2);
 }

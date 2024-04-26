@@ -4,7 +4,7 @@ import WelcomeButton from "../Buttons/Buttons.jsx";
 const Welcome = () => {
   return (
     <>
-      <h1>Bienvenido!</h1>
+      <h1>Welcome!</h1>
       <WelcomeButton />
       <div className="shadowPictureDecoration1" />
       <div className="pictureDecoration1" />
