@@ -1,4 +1,5 @@
 import "./Header.css";
+import ARefs from "../ARefs/ARefs.jsx";
 
 const Header = () => {
   return (
@@ -6,12 +7,8 @@ const Header = () => {
       <div className="headerDiv">
         <div className="logoRD">RD</div>
         <div className="keywordsReference">
-          <a href="https://www.google.com" target="_blank">
-            Home
-          </a>
-          <a href="https://www.youtube.com/" target="_blank">
-            Contact us
-          </a>
+          <ARefs showTitle="Home" linkTo="#" />
+          <ARefs showTitle="Contact us" linkTo="#" />
         </div>
       </div>
     </>
