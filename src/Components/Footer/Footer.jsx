@@ -1,15 +1,25 @@
 import "./Footer.css";
+import { HighlightsContent } from "/src/App.jsx";
 import Highlights from "../Highlights/Highlights.jsx";
+import { useContext } from "react";
 
 const Footer = () => {
+  const highlightsContent = useContext(HighlightsContent);
+
   return (
     <>
       <div className="footerDiv">
-        <Highlights
-          image="https://c0.klipartz.com/pngpicture/240/412/gratis-png-iconos-de-computadora-camion-icono-de-diseno-camioneta.png"
-          title="Free Shipping"
-          description="Order Over $600"
-        />
+        {highlightsContent.map((props) => {
+          return (
+            <div key={props.id}>
+              <Highlights
+                image={props.image}
+                title={props.title}
+                description={props.description}
+              />
+            </div>
+          );
+        })}
       </div>
     </>
   );
