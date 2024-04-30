@@ -1,4 +1,4 @@
-import Welcome from "./Components/WelcomeBody/Welcome.jsx";
+import Principal from "./Components/PrincipalBody/Principal.jsx";
 import Header from "./Components/Header/Header.jsx";
 import Footer from "./Components/Footer/Footer.jsx";
 import "./App.css";
@@ -12,8 +12,8 @@ function App() {
   const [isLoading, setIsLoading] = useState(true);
   const [productsList, setProductsList] = useState([]);
 
-  function callData() {
-    fetch("https://fakestoreapi.com/products")
+  async function callData() {
+    await fetch("https://fakestoreapi.com/products")
       .then((res) => res.json())
       .then((json) => {
         setProductsList(json);
@@ -22,8 +22,6 @@ function App() {
   }
 
   useEffect(() => {
-    console.log("Montaje");
-
     if (!welcome) {
       callData();
     } else {
@@ -31,15 +29,10 @@ function App() {
       setProductsList([]);
     }
 
-    console.log(productsList);
-    console.log(welcome);
-
-    return () => {
-      console.log("Desmontaje");
-    };
+    return () => {};
   }, [welcome]);
 
-  const highlightsContent = [
+  const SpecialFeaturesContent = [
     {
       id: 1,
       image: "src/assets/truck.png",
@@ -68,9 +61,9 @@ function App() {
 
   return (
     <>
-      <HighlightsContent.Provider value={highlightsContent}>
+      <HighlightsContent.Provider value={SpecialFeaturesContent}>
         <ProductsListContent.Provider value={{ productsList, isLoading }}>
-          <Welcome
+          <Principal
             onClick={() => {
               setWelcome(!welcome);
             }}

@@ -1,6 +1,6 @@
-import "./Highlights.css";
+import "./SpecialFeatures.css";
 
-export default function Highlights(props) {
+export default function SpecialFeatures(props) {
   return (
     <div className="container">
       <img className="pictureClass" src={props.image} />

@@ -19,9 +19,14 @@
   line-height: 1;
   width: fit-content;
   justify-self: center;
-  font-size: 9vh;
+  font-size: 8.5vh;
   grid-column: 1;
   grid-row: 1;
+  color: white;
+}
+
+span {
+  color: rgb(204, 2, 2);
 }
 
 .keywordsReference {

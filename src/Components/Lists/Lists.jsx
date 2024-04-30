@@ -2,6 +2,44 @@ import "./Lists.css";
 import { ProductsListContent } from "../../App";
 import { useContext, useState } from "react";
 
+function CountProducts({ listMap, onClick }) {
+  return (
+    <>
+      {listMap.map((product) => {
+        return (
+          <li key={product.id}>
+            <a
+              className="ListA"
+              onClick={() => {
+                onClick(product.id);
+              }}
+            >
+              {product.title}
+            </a>
+          </li>
+        );
+      })}
+    </>
+  );
+}
+
+function showSection(showPicture, productsList) {
+  if (showPicture) {
+    return (
+      <div className="pictureSpace">
+        <img className="imageClass" src={productsList[showPicture - 1].image} />
+        <p className="textClass">{productsList[showPicture - 1].description}</p>
+      </div>
+    );
+  } else {
+    return (
+      <div className="pictureSpace">
+        <h1 className="initialSpace">Select a product to see it here!</h1>
+      </div>
+    );
+  }
+}
+
 export default function ProductsList() {
   const dataProducts = useContext(ProductsListContent);
   const [showPicture, setShowPicture] = useState(false);
@@ -12,56 +50,17 @@ export default function ProductsList() {
 
   return (
     <div className="listProducts">
-      <h1
-        style={{
-          margin: "10px",
-          marginBottom: "20px",
-          fontSize: "5vh",
-          backgroundColor: "rgba(204,2,2,0.6)",
-        }}
-      >
-        Lista de Productos
+      <h1 className="titleSection">
+        <mark>Products List</mark>
       </h1>
       <div className="productsView">
         <ol className="products">
-          {dataProducts.productsList.map((product) => {
-            return (
-              <li key={product.id}>
-                <a
-                  onClick={() => {
-                    setShowPicture(product.id);
-                  }}
-                >
-                  {product.title}
-                </a>
-              </li>
-            );
-          })}
+          <CountProducts
+            listMap={dataProducts.productsList}
+            onClick={setShowPicture}
+          />
         </ol>
-        {showPicture ? (
-          <div className="pictureSpace">
-            <img
-              className="imageClass"
-              src={dataProducts.productsList[showPicture - 1].image}
-            />
-            <p className="textClass">
-              {dataProducts.productsList[showPicture - 1].description}
-            </p>
-          </div>
-        ) : (
-          <div className="pictureSpace">
-            <h1
-              style={{
-                gridRow: "span 2/3",
-                fontSize: "5vh",
-                padding: "5%",
-                alignSelf: "center",
-              }}
-            >
-              Select a product to see it here!
-            </h1>
-          </div>
-        )}
+        {showSection(showPicture, dataProducts.productsList)}
       </div>
     </div>
   );

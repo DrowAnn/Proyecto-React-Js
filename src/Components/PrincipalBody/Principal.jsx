@@ -1,20 +1,18 @@
-import "./Welcome.css";
-import WelcomeButton from "../Buttons/Buttons.jsx";
+import "./Principal.css";
+import Button from "../Buttons/Buttons.jsx";
 import ProductsList from "../Lists/Lists.jsx";
 
-const Welcome = (props) => {
+const Principal = ({ statusWelcome, onClick }) => {
   let [welcomeMessage, welcomeButton, backButton, productsList] = "";
 
-  if (props.statusWelcome) {
+  if (statusWelcome) {
     welcomeMessage = <h1 style={{ fontSize: "8vh" }}>Welcome!</h1>;
-    welcomeButton = (
-      <WelcomeButton message="See Products..." onClick={props.onClick} />
-    );
+    welcomeButton = <Button message="See Products..." onClick={onClick} />;
   } else {
     backButton = (
-      <WelcomeButton
+      <Button
         message="Back To Home"
-        onClick={props.onClick}
+        onClick={onClick}
         style={{ position: "absolute", top: "14vh", left: "5%" }}
       />
     );
@@ -35,4 +33,4 @@ const Welcome = (props) => {
   );
 };
 
-export default Welcome;
+export default Principal;

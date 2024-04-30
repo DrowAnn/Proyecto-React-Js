@@ -24,7 +24,7 @@
   grid-column: 2;
   grid-row: 1;
   font-weight: bolder;
-  font-size: 4vh;
+  font-size: 2vw;
   color: rgb(204, 2, 2);
 }
 
@@ -35,6 +35,6 @@
   align-self: center;
   grid-column: 2;
   grid-row: 2;
-  font-size: 2.4vh;
+  font-size: 1.2vw;
   color: rgb(255, 255, 255, 0.6);
 }
