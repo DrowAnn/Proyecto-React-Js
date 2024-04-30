@@ -1,20 +1,68 @@
 import "./Lists.css";
 import { ProductsListContent } from "../../App";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 
 export default function ProductsList() {
-  const productsList = useContext(ProductsListContent);
+  const dataProducts = useContext(ProductsListContent);
+  const [showPicture, setShowPicture] = useState(false);
+
+  if (dataProducts.isLoading) {
+    return <h1>Is Loading...</h1>;
+  }
 
   return (
     <div className="listProducts">
-      {console.log(productsList[0])}
-      <h1 style={{ margin: "10px", fontSize: "5vh" }}>Lista de Productos</h1>
-      <img src={productsList[5].image} style={{ width: "80px" }} />
-      <ol className="products">
-        {productsList.map((product) => {
-          return <li key={product.id}>{product.title}</li>;
-        })}
-      </ol>
+      <h1
+        style={{
+          margin: "10px",
+          marginBottom: "20px",
+          fontSize: "5vh",
+          backgroundColor: "rgba(204,2,2,0.6)",
+        }}
+      >
+        Lista de Productos
+      </h1>
+      <div className="productsView">
+        <ol className="products">
+          {dataProducts.productsList.map((product) => {
+            return (
+              <li key={product.id}>
+                <a
+                  onClick={() => {
+                    setShowPicture(product.id);
+                  }}
+                >
+                  {product.title}
+                </a>
+              </li>
+            );
+          })}
+        </ol>
+        {showPicture ? (
+          <div className="pictureSpace">
+            <img
+              className="imageClass"
+              src={dataProducts.productsList[showPicture - 1].image}
+            />
+            <p className="textClass">
+              {dataProducts.productsList[showPicture - 1].description}
+            </p>
+          </div>
+        ) : (
+          <div className="pictureSpace">
+            <h1
+              style={{
+                gridRow: "span 2/3",
+                fontSize: "5vh",
+                padding: "5%",
+                alignSelf: "center",
+              }}
+            >
+              Select a product to see it here!
+            </h1>
+          </div>
+        )}
+      </div>
     </div>
   );
 }

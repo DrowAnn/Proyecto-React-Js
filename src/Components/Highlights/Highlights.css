@@ -9,8 +9,9 @@
 .pictureClass {
   grid-column: 1;
   grid-row: span 2 / 3;
-  max-width: 45%;
-  max-height: 85%;
+  width: 9vh;
+  height: 8vh;
+  object-fit: contain;
   justify-self: center;
   align-self: center;
 }

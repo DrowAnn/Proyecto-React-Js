@@ -22,7 +22,7 @@ const Welcome = (props) => {
   }
 
   return (
-    <>
+    <div>
       <div className="shadowPictureDecoration1" />
       <div className="pictureDecoration1" />
       <div className="shadowPictureDecoration2" />
@@ -31,7 +31,7 @@ const Welcome = (props) => {
       {welcomeButton}
       {backButton}
       {productsList}
-    </>
+    </div>
   );
 };
 

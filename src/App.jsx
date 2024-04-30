@@ -9,15 +9,15 @@ export const ProductsListContent = React.createContext();
 
 function App() {
   const [welcome, setWelcome] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
   const [productsList, setProductsList] = useState([]);
 
   function callData() {
     fetch("https://fakestoreapi.com/products")
       .then((res) => res.json())
       .then((json) => {
-        console.log(productsList);
         setProductsList(json);
-        console.log(productsList);
+        setIsLoading(false);
       });
   }
 
@@ -27,6 +27,7 @@ function App() {
     if (!welcome) {
       callData();
     } else {
+      setIsLoading(true);
       setProductsList([]);
     }
 
@@ -68,7 +69,7 @@ function App() {
   return (
     <>
       <HighlightsContent.Provider value={highlightsContent}>
-        <ProductsListContent.Provider value={productsList}>
+        <ProductsListContent.Provider value={{ productsList, isLoading }}>
           <Welcome
             onClick={() => {
               setWelcome(!welcome);
